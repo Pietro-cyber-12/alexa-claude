@@ -38,13 +38,14 @@ def alexa_handler():
             }
         })
 
-    except Exception as e:
+   except Exception as e:
         return jsonify({
             "version": "1.0",
             "response": {
-                "outputSpeech": {"type": "PlainText", "text": "Errore. Riprova."},
+                "outputSpeech": {"type": "PlainText", "text": str(e)},
                 "shouldEndSession": True
             }
+        })            }
         })
 
 if __name__ == "__main__":
