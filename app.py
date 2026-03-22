@@ -14,7 +14,7 @@ def alexa_handler():
     try:
         query = body["request"]["intent"]["slots"]["query"]["value"]
         client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-        msg = client.messages.create(model="claude-haiku-4-5-20251001", max_tokens=150, system="Rispondi in italiano in massimo 2 frasi.", messages=[{"role": "user", "content": query}])
+        msg = client.messages.create(model="claude-haiku-4-5-20251001", max_tokens=300, system="Rispondi in italiano in modo preciso e dettagliato, ma conciso. Massimo 4-5 frasi. Evita elenchi puntati, usa solo testo continuo adatto alla lettura ad alta voce.", messages=[{"role": "user", "content": query}])
         speech = msg.content[0].text
     except Exception as e:
         speech = "Errore: " + str(e)
